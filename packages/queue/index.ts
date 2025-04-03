@@ -1,3 +1,3 @@
-export * from './queue.module';
-export * from './queue.processor';
-export * from './queue.service';
+export * from './src/queue.module';
+export * from './src/queue.processor';
+export * from './src/queue.service';
