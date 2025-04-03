@@ -1,0 +1,7 @@
+{
+    "name": "@core-libs/queue",
+    "version": "1.0.0",
+    "main": "index.ts",
+    "type": "module",
+    "license": "MIT"
+  }  
