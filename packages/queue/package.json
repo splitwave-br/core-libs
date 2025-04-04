@@ -1,7 +1,22 @@
 {
-    "name": "@core-libs/queue",
-    "version": "1.0.0",
-    "main": "index.ts",
-    "type": "module",
-    "license": "MIT"
-  }  
+  "name": "@splitwave-br/queue",
+  "version": "1.0.0",
+  "main": "dist/index.ts",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@nestjs/config": "^3.2.3",
+    "@nestjs/microservices": "^10.4.4",
+    "amqp-connection-manager": "^4.1.14",
+    "amqplib": "^0.10.4"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.2"
+  }
+}
