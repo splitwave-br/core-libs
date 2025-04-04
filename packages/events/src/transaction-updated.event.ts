@@ -1,4 +1,4 @@
-import { AcquirerEnum } from '@libs/core/domain/entity/enum/acquirer.enum';
+import { AcquirerEnum } from '@splitwave-br/core';
 import { DomainEvent } from './domain-event';
 import { TransactionStatusEnum } from '@libs/core/domain/entity/enum/transaction-status.enum';
 

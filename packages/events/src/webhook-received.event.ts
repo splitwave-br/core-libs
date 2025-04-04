@@ -1,5 +1,5 @@
-import { AcquirerEnum } from '@libs/core/domain/entity/enum/acquirer.enum';
-import { DomainEvent } from '@libs/events/domain-event';
+import { AcquirerEnum } from '@splitwave-br/core';
+import { DomainEvent } from './domain-event';
 
 export class WebhookReceivedEvent extends DomainEvent<WebhookReceivedEvent> {
   hash: string;

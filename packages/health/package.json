@@ -1,20 +1,26 @@
 {
     "name": "@splitwave-br/health",
-    "version": "1.0.0",
+    "version": "0.0.0",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "scripts": {
-      "build": "tsc"
+        "build": "tsc -b tsconfig.lib.json",
+        "prepublishOnly": "npm run build"
     },
     "license": "MIT",
     "publishConfig": {
-      "registry": "https://npm.pkg.github.com/"
+        "registry": "https://npm.pkg.github.com/"
     },
     "dependencies": {
-         "crypto": "^1.0.1"
+        "crypto": "^1.0.1"
     },
     "devDependencies": {
-      "typescript": "^5.0.0"
+        "@nestjs/axios": "^4.0.0",
+        "@nestjs/terminus": "^11.0.0",
+        "@nestjs/testing": "^11.0.13",
+        "@types/jest": "^29.5.14",
+        "@types/mocha": "^10.0.10",
+        "express": "^5.1.0",
+        "typescript": "^5.0.0"
     }
-  }
-  
+}
