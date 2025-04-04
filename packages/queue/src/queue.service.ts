@@ -1,4 +1,4 @@
-import { DomainEvent } from '@libs/events/domain-event';
+import { DomainEvent } from '../../events/src/domain-event';
 import {
   Inject,
   Injectable,

@@ -1,0 +1,20 @@
+{
+    "name": "@splitwave-br/context-service",
+    "version": "1.0.0",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "scripts": {
+      "build": "tsc"
+    },
+    "license": "MIT",
+    "publishConfig": {
+      "registry": "https://npm.pkg.github.com/"
+    },
+    "dependencies": {
+         "crypto": "^1.0.1"
+    },
+    "devDependencies": {
+      "typescript": "^5.0.0"
+    }
+  }
+  
