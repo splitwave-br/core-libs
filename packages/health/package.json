@@ -1,5 +1,5 @@
 {
-    "name": "@splitwave-br/context-service",
+    "name": "@splitwave-br/health",
     "version": "1.0.0",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",

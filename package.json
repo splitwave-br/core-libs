@@ -1,10 +1,13 @@
 {
-  "name": "@splitwave/core-libs",
+  "name": "core-libs",
+  "private": true,
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean:all": "rm -rf packages/*/dist",
+    "build:all": "npm run build --workspace=@splitwave-br/queue && npm run build --workspace=@splitwave-br/events && npm run build --workspace=@splitwave-br/core && npm run build --workspace=@splitwave-br/context-service && npm run build --workspace=@splitwave-br/health && npm run build --workspace=@splitwave-br/acquirers",
+    "publish:all": "npm publish --workspace=@splitwave-br/queue && npm publish --workspace=@splitwave-br/events && npm publish --workspace=@splitwave-br/core && npm publish --workspace=@splitwave-br/context-service && npm publish --workspace=@splitwave-br/health && npm publish --workspace=@splitwave-br/acquirers"
   },
   "workspaces": [
     "packages/*"
