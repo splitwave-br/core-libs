@@ -19,7 +19,6 @@
         "@nestjs/terminus": "^11.0.0",
         "@nestjs/testing": "^11.0.13",
         "@types/jest": "^29.5.14",
-        "@types/mocha": "^10.0.10",
         "express": "^5.1.0",
         "typescript": "^5.0.0"
     }

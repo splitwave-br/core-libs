@@ -1,4 +1,5 @@
-import { DomainEvent } from '../../events/src/domain-event';
+import { DomainEvent } from './domain-event';
+
 import {
   Inject,
   Injectable,

@@ -1,7 +1,7 @@
-import { ContextService } from '@libs/context-service';
-import { BusinessException } from '@libs/core/domain/exception/business.exception';
-import { DomainEvent } from '@libs/events/domain-event';
-import { Handler } from '@libs/events/handler.interface';
+import { ContextService } from '@splitwave-br/context-service';
+import { BusinessException } from '@splitwave-br/core';
+import { DomainEvent } from './domain-event';
+import { Handler } from './handler.interface';
 import { Injectable, Logger } from '@nestjs/common';
 import { RmqContext } from '@nestjs/microservices';
 import { QueueService } from './queue.service';
