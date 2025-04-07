@@ -44,6 +44,8 @@ core-libs/
 └── README.md                   # Este arquivo
 ```
 
+----
+
 🚀 Scripts disponíveis
 
 🔧 Limpar builds antigos
@@ -75,6 +77,8 @@ npm run publish:all
 Publica todos os pacotes manualmente, na ordem definida.
 
 Requer variável de ambiente NPM_TOKEN configurada com permissão de write:packages.
+
+----
 
 🔁 Versionamento com Changesets
 Este monorepo utiliza o Changesets para versionar e publicar apenas os pacotes alterados.
