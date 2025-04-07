@@ -25,12 +25,12 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Install dependencies
-        run: npm install --workspace=@splitwave-br/core
+        run: npm install --workspace=@splitwave-br/queue
 
       - name: Build lib
-        run: npm run build --workspace=@splitwave-br/core
+        run: npm run build --workspace=@splitwave-br/queue
 
       - name: Publish package
-        run: npm publish --workspace=@splitwave-br/core
+        run: npm publish --workspace=@splitwave-br/queue
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
