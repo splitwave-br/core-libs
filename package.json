@@ -6,6 +6,7 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc -b",
+    "version-packages": "changeset version",
     "build:core": "tsc -b packages/core",
     "build:queue": "tsc -b packages/queue",
     "prepare-dev": "npm run clean && npm run build",

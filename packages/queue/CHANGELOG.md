@@ -1,0 +1,8 @@
+# @splitwave-br/queue
+
+## 1.0.0
+
+### Major Changes
+
+- 0e47772: Teste primeira versao
+- Test to import on webhook
