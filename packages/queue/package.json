@@ -18,6 +18,7 @@
     "amqplib": "^0.10.4"
   },
   "devDependencies": {
+    "@nestjs/testing": "^10.2.6",
     "@splitwave-br/context-service": "0.0.0",
     "@splitwave-br/core": "0.0.5",
     "@splitwave-br/events": "0.0.1",

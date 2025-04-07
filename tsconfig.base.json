@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+      "baseUrl": ".",
+      "paths": {
+        "@splitwave-br/core": ["packages/core/src"],
+        "@splitwave-br/context-service": ["packages/context-service/src"],
+        "@splitwave-br/queue": ["packages/queue/src"],
+        "@splitwave-br/events": ["packages/events/src"],
+        "@splitwave-br/health": ["packages/health/src"],
+        "@splitwave-br/acquirers": ["packages/acquirers/src"]
+      }
+    }
+  }
+  

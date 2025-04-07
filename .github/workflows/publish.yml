@@ -1,4 +1,4 @@
-name: Publish Core Library
+name: Publish Queue Library
 
 on:
   push:
@@ -24,10 +24,16 @@ jobs:
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Install dependencies
-        run: npm install --workspace=@splitwave-br/queue
+      - name: Install all dependencies
+        run: npm install
 
-      - name: Build lib
+      - name: Build core
+        run: npm run build --workspace=@splitwave-br/core
+
+      - name: Build context-service
+        run: npm run build --workspace=@splitwave-br/context-service
+
+      - name: Build queue
         run: npm run build --workspace=@splitwave-br/queue
 
       - name: Publish package

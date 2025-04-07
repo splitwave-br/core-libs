@@ -23,14 +23,18 @@ jobs:
         run: echo "//npm.pkg.github.com/:_authToken=${NPM_TOKEN}" > .npmrc
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-
+        
       - name: Install dependencies
         run: npm install
 
-      - name: Build all packages
-        run: npm run build
+      # Build na ordem correta
+      - name: Build core
+        run: npm run build --workspace=@splitwave-br/core
 
-      - name: Publish changed packages
-        run: npm run release
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Build context-service
+        run: npm run build --workspace=@splitwave-br/context-service
+
+      - name: Build queue
+        run: npm run build --workspace=@splitwave-br/queue
+
+      - name: Build

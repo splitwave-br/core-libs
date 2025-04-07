@@ -1,5 +1,5 @@
 import { ContextService } from '@splitwave-br/context-service';
-import { BusinessException } from '@splitwave-br/core/';
+import { BusinessException } from '@splitwave-br/core';
 import { DomainEvent } from './domain-event';
 import { InternalServerErrorException } from '@nestjs/common';
 import { RmqContext } from '@nestjs/microservices';
