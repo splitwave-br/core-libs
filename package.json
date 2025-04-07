@@ -5,11 +5,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "version-packages": "changeset version",
-    "clean:all": "rm -rf packages/*/dist",
-    "barrel": "barrel src --delete",
-    "build:all": "npm run build --workspace=@splitwave-br/queue && npm run build --workspace=@splitwave-br/events && npm run build --workspace=@splitwave-br/core && npm run build --workspace=@splitwave-br/context-service && npm run build --workspace=@splitwave-br/health && npm run build --workspace=@splitwave-br/acquirers",
-    "publish:all": "npm publish --workspace=@splitwave-br/queue && npm publish --workspace=@splitwave-br/events && npm publish --workspace=@splitwave-br/core && npm publish --workspace=@splitwave-br/context-service && npm publish --workspace=@splitwave-br/health && npm publish --workspace=@splitwave-br/acquirers"
+    "build": "tsc -b",
+    "build:core": "tsc -b packages/core",
+    "build:queue": "tsc -b packages/queue",
+    "prepare-dev": "npm run clean && npm run build",
+    "build:all": "tsc -b packages/*"
   },
   "workspaces": [
     "packages/*"

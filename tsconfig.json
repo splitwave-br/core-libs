@@ -1,0 +1,11 @@
+{
+    "files": [],
+    "references": [
+      { "path": "./packages/core" },
+      { "path": "./packages/context-service" },
+      { "path": "./packages/queue" },
+      { "path": "./packages/events" },
+      { "path": "./packages/health" },
+      { "path": "./packages/acquirers" }
+    ]
+  }

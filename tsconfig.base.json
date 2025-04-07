@@ -1,6 +1,8 @@
 {
     "compilerOptions": {
       "baseUrl": ".",
+      "experimentalDecorators": true,
+      "emitDecoratorMetadata": true,
       "paths": {
         "@splitwave-br/core": ["packages/core/src"],
         "@splitwave-br/context-service": ["packages/context-service/src"],
