@@ -1,7 +1,7 @@
 {
   "name": "@splitwave-br/queue",
-  "version": "1.0.0",
-  "main": "dist/index.ts",
+  "version": "1.0.2",
+  "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc -b tsconfig.lib.json",
