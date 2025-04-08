@@ -1,6 +1,6 @@
 {
   "name": "@splitwave-br/queue",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -19,9 +19,6 @@
   },
   "devDependencies": {
     "@nestjs/testing": "^10.2.6",
-    "@splitwave-br/context-service": "0.0.0",
-    "@splitwave-br/core": "1.0.0",
-    "@splitwave-br/events": "1.0.0",
     "@types/jest": "^29.5.14",
     "typescript": "^5.8.2"
   }

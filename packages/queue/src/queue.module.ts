@@ -3,12 +3,10 @@ import { ConfigModule } from '@nestjs/config';
 import { ClientsModule, Transport } from '@nestjs/microservices';
 import { QueueProcessor } from './queue.processor';
 import { QueueService } from './queue.service';
-import { ContextServiceModule } from '@splitwave-br/context-service';
 
 @Module({
   imports: [
     ConfigModule.forRoot(),
-    ContextServiceModule,
     ClientsModule.register([
       {
         name: QueueService.name,

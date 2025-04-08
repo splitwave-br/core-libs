@@ -1,7 +1,5 @@
-import { ContextService } from '@splitwave-br/context-service';
-import { BusinessException } from '@splitwave-br/core';
 import { DomainEvent } from './domain-event';
-import { InternalServerErrorException } from '@nestjs/common';
+import { BadRequestException, InternalServerErrorException } from '@nestjs/common';
 import { RmqContext } from '@nestjs/microservices';
 import { Test, TestingModule } from '@nestjs/testing';
 import { QueueProcessor } from './queue.processor';
@@ -10,7 +8,6 @@ import { QueueService } from './queue.service';
 describe('QueueProcessorTest', () => {
   let processor: QueueProcessor;
   let service: QueueService;
-  let context: ContextService;
   let mockContext: RmqContext;
 
   const event = {
@@ -25,17 +22,12 @@ describe('QueueProcessorTest', () => {
         {
           provide: QueueService,
           useValue: { retry: jest.fn() },
-        },
-        {
-          provide: ContextService,
-          useValue: { setTenant: jest.fn() },
-        },
+        }
       ],
     }).compile();
 
     processor = module.get<QueueProcessor>(QueueProcessor);
     service = module.get<QueueService>(QueueService);
-    context = module.get<ContextService>(ContextService);
 
     mockContext = {
       getChannelRef: jest.fn().mockReturnValue({
@@ -74,7 +66,6 @@ describe('QueueProcessorTest', () => {
       await processor.process(event, mockContext, handler);
 
       // then
-      expect(context.setTenant).toHaveBeenCalledWith(event.tenant);
       expect(handler.execute).toHaveBeenCalledWith(event);
       expect(channelRef.ack).toHaveBeenCalled();
     },
@@ -87,13 +78,12 @@ describe('QueueProcessorTest', () => {
       retryCount: 0,
       handler: {
         execute: jest.fn().mockImplementation(() => {
-          throw new BusinessException('Error');
+          throw new BadRequestException('Error');
         }),
       },
       channelRef: { nack: jest.fn() },
       expectationFn: (params: any) => {
-        expect(context.setTenant).toHaveBeenCalledWith(event.tenant);
-        expect(params.handler.execute).toHaveBeenCalled();
+         expect(params.handler.execute).toHaveBeenCalled();
         expect(mockContext.getChannelRef().nack).toHaveBeenCalledWith(
           expect.anything(),
           false,
@@ -113,8 +103,7 @@ describe('QueueProcessorTest', () => {
       },
       channelRef: { nack: jest.fn() },
       expectationFn: (params: any) => {
-        expect(context.setTenant).toHaveBeenCalledWith(event.tenant);
-        expect(params.handler.execute).toHaveBeenCalled();
+         expect(params.handler.execute).toHaveBeenCalled();
         expect(mockContext.getChannelRef().nack).toHaveBeenCalledWith(
           expect.anything(),
           false,
@@ -138,7 +127,6 @@ describe('QueueProcessorTest', () => {
       },
       channelRef: { nack: jest.fn() },
       expectationFn: (params: any) => {
-        expect(context.setTenant).toHaveBeenCalledWith(event.tenant);
         expect(params.handler.execute).toHaveBeenCalled();
         expect(mockContext.getChannelRef().nack).toHaveBeenCalledWith(
           expect.anything(),
@@ -162,8 +150,7 @@ describe('QueueProcessorTest', () => {
       },
       channelRef: { nack: jest.fn() },
       expectationFn: (params: any) => {
-        expect(context.setTenant).toHaveBeenCalledWith(event.tenant);
-        expect(params.handler.execute).toHaveBeenCalled();
+         expect(params.handler.execute).toHaveBeenCalled();
         expect(mockContext.getChannelRef().nack).toHaveBeenCalledWith(
           expect.anything(),
           false,
@@ -186,8 +173,7 @@ describe('QueueProcessorTest', () => {
       },
       channelRef: { nack: jest.fn() },
       expectationFn: (params: any) => {
-        expect(context.setTenant).toHaveBeenCalledWith(event.tenant);
-        expect(params.handler.execute).toHaveBeenCalled();
+         expect(params.handler.execute).toHaveBeenCalled();
         expect(mockContext.getChannelRef().nack).toHaveBeenCalledWith(
           expect.anything(),
           false,

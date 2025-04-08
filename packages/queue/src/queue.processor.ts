@@ -1,8 +1,6 @@
-import { ContextService } from '@splitwave-br/context-service';
-import { BusinessException } from '@splitwave-br/core';
 import { DomainEvent } from './domain-event';
 import { Handler } from './handler.interface';
-import { Injectable, Logger } from '@nestjs/common';
+import { BadRequestException, Injectable, Logger } from '@nestjs/common';
 import { RmqContext } from '@nestjs/microservices';
 import { QueueService } from './queue.service';
 
@@ -12,7 +10,7 @@ export class QueueProcessor {
 
   constructor(
     private readonly queueService: QueueService,
-    private readonly contextService: ContextService,
+    // private readonly contextService: ContextService,
   ) {}
 
   public async process(
@@ -34,7 +32,7 @@ export class QueueProcessor {
         `*** Message received: ${pattern} - ${JSON.stringify(event)}`,
       );
 
-      this.contextService.setTenant(event.tenant);
+      // this.contextService.setTenant(event.tenant);
 
       await handler.execute(event);
       this.logger.log(`*** Message processed: ${pattern}`);
@@ -52,7 +50,7 @@ export class QueueProcessor {
         return;
       }
 
-      if (e instanceof BusinessException) {
+      if (e instanceof BadRequestException) {
         channel.nack(originalMessage, false, false);
         this.logger.warn(
           `*** Message nacked without retry: ${pattern} - ${e.message}`,

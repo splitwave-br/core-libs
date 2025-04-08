@@ -7,8 +7,6 @@
     },
     "include": ["src"],
     "references": [
-      { "path": "../core" },
-      { "path": "../context-service" }
     ]
   }
   
