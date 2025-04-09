@@ -27,12 +27,6 @@ jobs:
       - name: Install all dependencies
         run: npm install
 
-      - name: Build core
-        run: npm run build --workspace=@splitwave-br/core
-
-      - name: Build context-service
-        run: npm run build --workspace=@splitwave-br/context-service
-
       - name: Build queue
         run: npm run build --workspace=@splitwave-br/queue
 
