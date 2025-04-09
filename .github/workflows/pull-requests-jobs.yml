@@ -1,0 +1,61 @@
+name: Pull Request Jobs
+
+on:
+  pull_request:
+    branches:
+      - develop
+      - main
+
+jobs:
+  gitflow-check:
+    name: GitFlow Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Validate GitFlow
+        run: |
+          # Nome da branch de destino da PR (target branch)
+          TARGET_BRANCH="${{ github.event.pull_request.base.ref }}"
+
+          # Nome da branch de origem da PR (source branch)
+          SOURCE_BRANCH="${{ github.event.pull_request.head.ref }}"
+
+          if [[ "$SOURCE_BRANCH" =~ ^feature/ ]]; then
+            ALLOWED_TARGET_BRANCHES="develop"
+          elif [[ "$SOURCE_BRANCH" =~ ^bugfix/ ]]; then
+            ALLOWED_TARGET_BRANCHES="develop"
+          elif [[ "$SOURCE_BRANCH" =~ ^release/ ]]; then
+            ALLOWED_TARGET_BRANCHES="main"
+          elif [[ "$SOURCE_BRANCH" =~ ^hotfix/ ]]; then
+            ALLOWED_TARGET_BRANCHES="main"
+          elif [[ "$SOURCE_BRANCH" =~ ^backport/ ]]; then
+            ALLOWED_TARGET_BRANCHES="develop"
+          else
+            echo "❌ A branch de origem ($SOURCE_BRANCH) não segue a nomenclatura do GitFlow (feature/, bugfix/, release/, hotfix/, backport/)."
+            exit 1
+          fi
+
+          if [[ ! "$TARGET_BRANCH" =~ ^($ALLOWED_TARGET_BRANCHES)$ ]]; then
+            echo "❌ O destino da PR ($TARGET_BRANCH) não é válida para a branch de origem $SOURCE_BRANCH."
+            echo "   Permitido: $ALLOWED_TARGET_BRANCHES"
+            exit 1
+          fi
+
+          echo "✅ A branch segue o fluxo do GitFlow!"
+        continue-on-error: false
+
+  automated-tests:
+    name: Automated Tests
+    runs-on: ubuntu-latest
+    needs: gitflow-check
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: ArtiomTr/jest-coverage-report-action@v2
+        with:
+          test-script: npm run test:ci

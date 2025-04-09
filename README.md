@@ -8,12 +8,7 @@ Este repositório é um **monorepo** que centraliza as bibliotecas reutilizávei
 
 | Pacote                     | Descrição                             |
 |---------------------------|----------------------------------------|
-| `@splitwave-br/core`      | Entidades, enums e exceções base       |
 | `@splitwave-br/queue`     | Lógica de filas, processors e jobs     |
-| `@splitwave-br/context-service` | Contexto da requisição, tracing e ID's |
-| `@splitwave-br/health`    | Verificações de health-check           |
-| `@splitwave-br/events`    | Eventos de domínio                     |
-| `@splitwave-br/acquirers` | Integrações com adquirentes            |
 
 ---
 
