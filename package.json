@@ -9,6 +9,7 @@
     "version-packages": "changeset version",
     "build:queue": "tsc -b packages/queue",
     "prepare-dev": "npm run clean && npm run build",
+    "test:ci": "jest --config ./jest.config.ci.json --detectOpenHandles --forceExit --verbose --colors --watchAll=false --ci --coverage --testLocationInResults --json --outputFile=report.json",
     "build:all": "tsc -b packages/*"
   },
   "workspaces": [
