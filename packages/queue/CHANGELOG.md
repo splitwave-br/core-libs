@@ -1,6 +1,6 @@
 # @splitwave-br/queue
 
-## 1.0.0
+## 1.0.3
 
 ### Major Changes
 
